@@ -25,22 +25,22 @@ const Registerpage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "http://localhost:5001/api/auth/register",
         user
       );
       if (response.data.success) {
-        message.success("Registration Successful");
+        message.success("Đăng ký thành công");
         setUser({
           username: "",
           email: "",
           password: "",
         });
       } else {
-        message.error("Registration Failed. Please try again.");
+        message.error("Đăng ký thất bại. Vui lòng thử lại.");
       }
     } catch (error) {
       console.error("Error during registration:", error.message);
-      message.error("Registration Failed. Please try again later.");
+      message.error("Đăng ký thất bại. Vui lòng thử lại sau.");
     }
   };
 
@@ -59,18 +59,18 @@ const Registerpage = () => {
             </div>
             <div className="registration-form">
               <h1 className="main-heading mb-3 text-7xl text-white">
-                Registration form
+                Đăng ký tài khoản
               </h1>
               <br />
               <form onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor="username">Username</label>
+                  <label htmlFor="username">Tên người dùng</label>
                   <input
                     type="text"
                     name="username"
                     value={user.username}
                     onChange={handleInput}
-                    placeholder="Username"
+                    placeholder="Tên người dùng"
                     required
                   />
                 </div>
@@ -86,19 +86,19 @@ const Registerpage = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Mật khẩu</label>
                   <input
                     type="password"
                     name="password"
                     value={user.password}
                     onChange={handleInput}
-                    placeholder="Password"
+                    placeholder="Mật khẩu"
                     required
                   />
                 </div>
                 <br />
                 <button type="submit" className="btn btn-submit">
-                  Register Now
+                  Đăng ký ngay
                 </button>
               </form>
             </div>

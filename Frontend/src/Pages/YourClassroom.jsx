@@ -13,7 +13,7 @@ const YourClassroom = () => {
     const fetchClassrooms = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/user/getclassroom",
+          "http://localhost:5001/api/user/getclassroom",
           { email: user.email } // Send email in the request body
         );
         setClassrooms(response.data.classrooms); // Assuming response.data.classrooms is an array of classrooms
@@ -36,18 +36,18 @@ const YourClassroom = () => {
             >
               <div className="card-content">
                 <p>
-                  <strong>Department:</strong> {classroom.department}
+                  <strong>Khoa:</strong> {classroom.department}
                 </p>
                 <p>
-                  <strong>Subject:</strong> {classroom.subject}
+                  <strong>Môn học:</strong> {classroom.subject}
                 </p>
               </div>
               <div className="card-actions space-x-5">
                 <Link to={`/viewattendancepage/${classroom._id}`}>
-                  <Button type="primary">View Attendance</Button>
+                  <Button type="primary">Xem điểm danh</Button>
                 </Link>
                 <Link to={`/yourclassroom/takeattendance/${classroom._id}`}>
-                  <Button type="primary">Take Attendance</Button>
+                  <Button type="primary">Điểm danh</Button>
                 </Link>
               </div>
             </Card>

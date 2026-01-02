@@ -22,7 +22,7 @@ export const Navbar = () => {
               <ul>
                 <li>
                   <NavLink to="/" activeClassName="active" exact>
-                    Home
+                    Trang chủ
                   </NavLink>
                 </li>
 
@@ -34,7 +34,7 @@ export const Navbar = () => {
                         activeClassName="active"
                         exact
                       >
-                        Your Classroom
+                        Lớp học của bạn
                       </NavLink>
                     </li>
                     <li>
@@ -43,7 +43,7 @@ export const Navbar = () => {
                         activeClassName="active"
                         exact
                       >
-                        Create Classroom
+                        Tạo lớp học
                       </NavLink>
                     </li>
                   </>
@@ -53,19 +53,19 @@ export const Navbar = () => {
                   <>
                     <li>
                       <NavLink to="/login" activeClassName="active" exact>
-                        Login
+                        Đăng nhập
                       </NavLink>
                     </li>
                     <li>
                       <NavLink to="/register" activeClassName="active" exact>
-                        Register
+                        Đăng ký
                       </NavLink>
                     </li>
                   </>
                 ) : (
                   <li>
                     <Link to="/" onClick={handleLogout}>
-                      Logout
+                      Đăng xuất
                     </Link>
                   </li>
                 )}

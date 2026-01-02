@@ -28,14 +28,14 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "http://localhost:5001/api/auth/login",
         user
       );
 
       if (response.data.success) {
         setUser({ name: response.data.username, email: user.email }); // Set username in context
         localStorage.setItem("token", response.data.token);
-        message.success("Login Successful");
+        message.success("Đăng nhập thành công");
         // Clear the form after successful login
         setUserState({
           email: "",
@@ -46,12 +46,12 @@ const LoginPage = () => {
       } else {
         message.error(
           response.data.message ||
-            "Login Failed. Please check your credentials."
+          "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin."
         );
       }
     } catch (error) {
       console.error("Error during login:", error.message);
-      message.error("Login Failed. Please try again later.");
+      message.error("Đăng nhập thất bại. Vui lòng thử lại sau.");
     }
   };
 
@@ -69,7 +69,7 @@ const LoginPage = () => {
               />
             </div>
             <div className="login-form">
-              <h1 className="main-heading mb-3 text-7xl text-white">Login</h1>
+              <h1 className="main-heading mb-3 text-7xl text-white">Đăng nhập</h1>
               <br />
               <form onSubmit={handleSubmit}>
                 <div>
@@ -83,18 +83,18 @@ const LoginPage = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Mật khẩu</label>
                   <input
                     type="password"
                     name="password"
                     value={user.password}
                     onChange={handleInput}
-                    placeholder="Password"
+                    placeholder="Mật khẩu"
                   />
                 </div>
                 <br />
                 <button type="submit" className="btn btn-submit">
-                  Login Now
+                  Đăng nhập ngay
                 </button>
               </form>
             </div>

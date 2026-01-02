@@ -13,7 +13,7 @@ const ViewAttendancePage = () => {
     const fetchAttendance = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/user/getattendacereport",
+          "http://localhost:5001/api/user/getattendacereport",
           { classid: id }
         );
 
@@ -47,12 +47,12 @@ const ViewAttendancePage = () => {
     <div className="container p-4">
       <div className="attendance-page-content mt-40 p-6 rounded-lg shadow-md">
         <h1 className="text-3xl font-bold mb-4 text-white text-center">
-          All Attendances
+          Tất cả phiên điểm danh
         </h1>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <div className="attendance-list">
           {attendanceData.length === 0 ? (
-            <p className="text-gray-500">No attendance records found.</p>
+            <p className="text-gray-500">Không tìm thấy dữ liệu điểm danh.</p>
           ) : (
             attendanceData.map((record) => (
               <div
@@ -64,7 +64,7 @@ const ViewAttendancePage = () => {
                 </h2>
                 <div className="view-button bg-blue-500 text-white px-4 py-2 rounded">
                   <Link to={`/viewattendancepage/${id}/${record.date}`}>
-                    View
+                    Xem
                   </Link>
                 </div>
               </div>

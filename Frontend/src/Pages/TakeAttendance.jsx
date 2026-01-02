@@ -25,11 +25,11 @@ const TakeAttendance = () => {
             image: imageSrc,
           }
         );
-        setDetectedName(response.data.name || "No face detected");
+        setDetectedName(response.data.name || "Không phát hiện khuôn mặt");
         setDetectedRollNumber(
-          response.data.roll_number || "No roll number found"
+          response.data.roll_number || "Không tìm thấy MSSV"
         );
-        setDetectedEmail(response.data.email || "No email found");
+        setDetectedEmail(response.data.email || "Không tìm thấy email");
       } catch (error) {
         console.error("Error sending image to backend:", error);
       }
@@ -70,17 +70,17 @@ const TakeAttendance = () => {
 
   return (
     <div className="container mx-auto p-4 flex flex-col items-center">
-      <h1 className="text-2xl font-bold mb-4">Take Attendance</h1>
+      <h1 className="text-2xl font-bold mb-4">Điểm danh</h1>
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">
-          Classroom Name
+          Tên lớp học
         </label>
         <input
           type="text"
           value={classroomName}
           onChange={(e) => setClassroomName(e.target.value)}
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-          placeholder="Enter classroom name"
+          placeholder="Nhập tên lớp học"
         />
       </div>
       {isWebcamOn && (
@@ -100,20 +100,20 @@ const TakeAttendance = () => {
         onClick={toggleWebcam}
         className="px-4 py-2 mb-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200"
       >
-        {isWebcamOn ? "Turn Off Webcam" : "Take Attendance"}
+        {isWebcamOn ? "Tắt Webcam" : "Điểm danh"}
       </button>
       {isWebcamOn && (
         <>
           <div className="text-lg font-semibold">
-            Detected Name:{" "}
+            Tên được phát hiện:{" "}
             <span className="text-green-500">{detectedName}</span>
           </div>
           <div className="text-lg font-semibold">
-            Detected Roll Number:{" "}
+            Mã số sinh viên:{" "}
             <span className="text-green-500">{detectedRollNumber}</span>
           </div>
           <div className="text-lg font-semibold">
-            Detected Email:{" "}
+            Email:{" "}
             <span className="text-green-500">{detectedEmail}</span>
           </div>
         </>

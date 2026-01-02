@@ -10,17 +10,17 @@ const Home = () => {
             <div className="grid grid-two-cols">
               <div className="home-content">
                 <h1 className="font-bold text-5xl text-white mb-12 ">
-                  Welcome to the Smart Attendance System!
+                  Chào mừng đến với Hệ thống Điểm danh Thông minh!
                 </h1>
                 <p className="text-white text-3xl mb-10">
-                  This system leverages the power of computer vision and machine
-                  learning to automate the attendance process. By using a webcam
-                  to capture images of students, the system can recognize faces
-                  and mark attendance automatically.
+                  Hệ thống này tận dụng sức mạnh của thị giác máy tính và học máy
+                  để tự động hóa quy trình điểm danh. Bằng cách sử dụng webcam
+                  để chụp ảnh sinh viên, hệ thống có thể nhận diện khuôn mặt
+                  và tự động điểm danh.
                 </p>
                 <p className="text-white text-2xl">
-                  This not only saves time but also reduces errors and ensures
-                  accurate record-keeping.
+                  Điều này không chỉ tiết kiệm thời gian mà còn giảm thiểu sai sót
+                  và đảm bảo ghi chép chính xác.
                 </p>
               </div>
               <div className="login-image">

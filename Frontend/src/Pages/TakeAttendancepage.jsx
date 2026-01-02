@@ -30,7 +30,7 @@ const TakeAttendancepage = () => {
   const fetchStudents = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/student/getstudentenr",
+        "http://localhost:5001/api/user/student/getstudentenr",
         {
           classid: id,
         }
@@ -49,7 +49,7 @@ const TakeAttendancepage = () => {
     const createattendancereport = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/user/createattendancereport",
+          "http://localhost:5001/api/user/createattendancereport",
           { classid: id, session: 1, attendance: allstudents }
         );
         setFetchingStudents(true);
@@ -76,7 +76,7 @@ const TakeAttendancepage = () => {
       try {
         console.log("Fetching report length for id:", id);
         const response = await axios.post(
-          "http://localhost:5000/api/user/getreportlength",
+          "http://localhost:5001/api/user/getreportlength",
           { classid: id }
         );
         console.log("Reports", response.data.reports);
@@ -98,7 +98,7 @@ const TakeAttendancepage = () => {
       try {
         console.log(id, reportlength, detectedEmail);
         const response = await axios.post(
-          "http://localhost:5000/api/user/updatereport",
+          "http://localhost:5001/api/user/updatereport",
           { classid: id, session: reportlength, email: detectedEmail }
         );
         console.log(response.data.message);
@@ -114,7 +114,7 @@ const TakeAttendancepage = () => {
     const fetchClassroomName = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/user/getclass",
+          "http://localhost:5001/api/user/getclass",
           { id }
         );
         setClassroomName(response.data.classroom.classname);
@@ -204,7 +204,7 @@ const TakeAttendancepage = () => {
   const createnewattendancedocument = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/createattendancereport",
+        "http://localhost:5001/api/user/createattendancereport",
         { classid: id, session: reportlength, attendance: allstudents }
       );
       setFetchingStudents(true);
@@ -235,13 +235,13 @@ const TakeAttendancepage = () => {
   return (
     <div className="container mx-auto p-4 flex flex-col items-center">
       <h1 className="text-2xl font-bold text-white mb-24 mt-40">
-        Take Attendance
+        Điểm danh
       </h1>
       <div className="flex flex-row justify-center items-start space-x-40 min-h-96 mb-80">
         {/* Left column: Student list */}
         <div className="w-1/2 pr-4">
           <div className="students-list">
-            <h2>Attendance Marked for</h2>
+            <h2>Đã điểm danh cho</h2>
             <ul>
               {students.map((student) => (
                 <li key={student.roll_number}>
@@ -272,22 +272,22 @@ const TakeAttendancepage = () => {
               onClick={calltwofunc}
               className="px-4 py-2 mb-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200"
             >
-              {isWebcamOn ? "Turn Off Webcam" : "Turn On Camera"}
+              {isWebcamOn ? "Tắt Webcam" : "Bật Camera"}
             </button>
             <button
               onClick={takenewattendance}
               className="px-4 py-2 mb-4 ml-6 bg-green-500 text-white rounded hover:bg-blue-600 transition duration-200"
             >
-              Take new Attendance
+              Điểm danh lượt mới
             </button>
             {isWebcamOn && (
               <>
                 <div className="text-lg font-semibold">
-                  Detected Name:{" "}
+                  Tên được phát hiện:{" "}
                   <span className="text-green-500">{detectedName}</span>
                 </div>
                 <div className="text-lg font-semibold">
-                  Detected Roll Number:{" "}
+                  Mã số sinh viên:{" "}
                   <span className="text-green-500">{detectedRollNumber}</span>
                 </div>
               </>

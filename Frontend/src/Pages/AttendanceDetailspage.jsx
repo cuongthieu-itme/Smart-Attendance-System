@@ -13,7 +13,7 @@ const AttendanceDetailspage = () => {
     const fetchAttendanceReport = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/user/getspecificreport",
+          "http://localhost:5001/api/user/getspecificreport",
           {
             classid: id,
             date,
@@ -32,25 +32,25 @@ const AttendanceDetailspage = () => {
     fetchAttendanceReport();
   }, [id, date]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (loading) return <div>Đang tải...</div>;
+  if (error) return <div>Lỗi: {error.message}</div>;
 
   return (
     <div className="container">
       <div className=" attendance-details-page text-white">
         <h1 className="text-4xl">
-          Attendance Report for {new Date(date).toLocaleDateString()}
+          Báo cáo điểm danh ngày {new Date(date).toLocaleDateString()}
         </h1>
         {attendanceReport.map((sessionReport) => (
           <div key={sessionReport._id} className="session-report">
-            <h2 className="text-2xl mt-6">Session {sessionReport.session}</h2>
+            <h2 className="text-2xl mt-6">Phiên {sessionReport.session}</h2>
             <table className="attendance-table">
               <thead>
                 <tr>
-                  <th>Name</th>
+                  <th>Tên</th>
                   <th>Email</th>
-                  <th>Roll Number</th>
-                  <th>Status</th>
+                  <th>Mã số sinh viên</th>
+                  <th>Trạng thái</th>
                 </tr>
               </thead>
               <tbody>
@@ -59,7 +59,7 @@ const AttendanceDetailspage = () => {
                     <td>{student.name}</td>
                     <td>{student.email}</td>
                     <td>{student.roll_number}</td>
-                    <td>{student.status ? "Present" : "Absent"}</td>
+                    <td>{student.status ? "Có mặt" : "Vắng mặt"}</td>
                   </tr>
                 ))}
               </tbody>

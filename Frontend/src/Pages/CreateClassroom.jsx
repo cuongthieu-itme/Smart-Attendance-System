@@ -22,20 +22,20 @@ const CreateClassroom = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/createclassroom",
+        "http://localhost:5001/api/user/createclassroom",
         classroomData
       );
 
       if (response.status === 201) {
-        message.success("Classroom created successfully");
+        message.success("Tạo lớp học thành công");
         setClassname("");
         setDepartment("");
         setSubject("");
       } else {
-        message.error(`Failed to create classroom: ${response.data.message}`);
+        message.error(`Tạo lớp học thất bại: ${response.data.message}`);
       }
     } catch (error) {
-      message.error(`Failed to create classroom: ${error.message}`);
+      message.error(`Tạo lớp học thất bại: ${error.message}`);
     }
   };
 
@@ -44,11 +44,11 @@ const CreateClassroom = () => {
       <main>
         <div className="createclassroom-form">
           <h2 className="main-heading mb-3 text-5xl text-white">
-            Create Classroom
+            Tạo lớp học
           </h2>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="classname">Classname:</label>
+              <label htmlFor="classname">Tên lớp học:</label>
               <input
                 type="text"
                 value={classname}
@@ -57,7 +57,7 @@ const CreateClassroom = () => {
               />
             </div>
             <div>
-              <label htmlFor="department">Department:</label>
+              <label htmlFor="department">Khoa:</label>
               <input
                 type="text"
                 value={department}
@@ -66,7 +66,7 @@ const CreateClassroom = () => {
               />
             </div>
             <div>
-              <label htmlFor="subject">Subject:</label>
+              <label htmlFor="subject">Môn học:</label>
               <input
                 type="text"
                 value={subject}
@@ -76,7 +76,7 @@ const CreateClassroom = () => {
             </div>
             <br />
             <button type="submit" className="btn-submit">
-              Create Classroom
+              Tạo lớp học
             </button>
           </form>
         </div>

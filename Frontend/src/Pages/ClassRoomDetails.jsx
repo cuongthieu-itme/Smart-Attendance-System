@@ -14,7 +14,7 @@ const ClassRoomDetails = () => {
     const fetchClassroomDetails = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/user/getclass",
+          "http://localhost:5001/api/user/getclass",
           { id }, // Pass the ID in the request body
           {
             headers: {
@@ -34,11 +34,11 @@ const ClassRoomDetails = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="container">Loading...</div>;
+    return <div className="container">Đang tải...</div>;
   }
 
   if (error) {
-    return <div className="container">Error: {error}</div>;
+    return <div className="container">Lỗi: {error}</div>;
   }
 
   return (
@@ -46,13 +46,13 @@ const ClassRoomDetails = () => {
       <div className="container">
         <div className="details-card text-white flex ">
           <p>
-            <strong>Classname:</strong> {classroom.classname}
+            <strong>Tên lớp học:</strong> {classroom.classname}
           </p>
           <p>
-            <strong>Department:</strong> {classroom.department}
+            <strong>Khoa:</strong> {classroom.department}
           </p>
           <p>
-            <strong>Subject:</strong> {classroom.subject}
+            <strong>Môn học:</strong> {classroom.subject}
           </p>
         </div>
       </div>

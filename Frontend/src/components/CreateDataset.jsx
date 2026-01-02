@@ -29,7 +29,7 @@ const CreateDataset = ({ classId, classname }) => {
       setFetchingStudents(true); // Set fetching state to true
 
       const response = await axios.post(
-        "http://localhost:5000/api/user/student/getstudents",
+        "http://localhost:5001/api/user/student/getstudents",
         {
           classid: classId,
         }
@@ -100,7 +100,7 @@ const CreateDataset = ({ classId, classname }) => {
 
       // Making request to add student to database
       const addStudentResponse = await axios.post(
-        "http://localhost:5000/api/user/student/addstudent",
+        "http://localhost:5001/api/user/student/addstudent",
         {
           name,
           roll_number: rollNumber,
@@ -110,7 +110,7 @@ const CreateDataset = ({ classId, classname }) => {
       );
 
       console.log("Student added:", addStudentResponse.data);
-      message.success("Student added successfully!");
+      message.success("Thêm sinh viên thành công!");
 
       // After adding student, fetch updated list
       fetchStudents();
@@ -125,7 +125,7 @@ const CreateDataset = ({ classId, classname }) => {
   return (
     <div className="create-dataset-container">
       <div className="students-list ml-48">
-        <h2>Students in this class:</h2>
+        <h2>Sinh viên trong lớp này:</h2>
         <ul>
           {students.map((student) => (
             <li key={student._id}>
@@ -133,27 +133,27 @@ const CreateDataset = ({ classId, classname }) => {
             </li>
           ))}
         </ul>
-        {fetchingStudents && <p>Loading students...</p>}
+        {fetchingStudents && <p>Đang tải danh sách sinh viên...</p>}
       </div>
       <div className="form-container">
-        <h1 className="main-heading text-3xl">Create Dataset</h1>
+        <h1 className="main-heading text-3xl">Tạo tập dữ liệu</h1>
 
         <div>
-          <label>Name</label>
+          <label>Tên</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name"
+            placeholder="Nhập tên của bạn"
           />
         </div>
         <div>
-          <label>Roll Number</label>
+          <label>Mã số sinh viên</label>
           <input
             type="text"
             value={rollNumber}
             onChange={(e) => setRollNumber(e.target.value)}
-            placeholder="Enter your roll number"
+            placeholder="Nhập mã số sinh viên"
           />
         </div>
         <div>
@@ -162,13 +162,13 @@ const CreateDataset = ({ classId, classname }) => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            placeholder="Nhập email của bạn"
           />
         </div>
 
         <div>
           <button onClick={toggleWebcam} className="btn">
-            {cameraOn ? "Turn Off Camera" : "Capture Image"}
+            {cameraOn ? "Tắt Camera" : "Bật Camera"}
           </button>
         </div>
         {cameraOn && (
@@ -182,13 +182,13 @@ const CreateDataset = ({ classId, classname }) => {
               ref={webcamRef}
             />
             <button onClick={capture} className="capture-btn">
-              Capture Photo
+              Chụp ảnh
             </button>
           </div>
         )}
         {imageCount !== null && (
           <div className="image-count">
-            <p>Total images in dataset: {imageCount}</p>
+            <p>Tổng số ảnh trong tập dữ liệu: {imageCount}</p>
           </div>
         )}
       </div>
